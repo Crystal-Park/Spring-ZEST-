@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="codeType">
+    
+    <resultMap type="com.spring.board.vo.CodeTypeVo" id="codeTypeVo">
+    	<result property="codeType" 	column="CODE_TYPE"/>
+    	<result property="codeId" 		column="CODE_ID"/>
+    	<result property="codeName" 	column="CODE_NAME"/>
+    </resultMap>
+    
+    
+    <!-- 전체 게시판 조회와 컬럼 이름별 조회가 되어야 함 -->
+    <select id="codeTypeList" parameterType="com.spring.board.vo.PageVo" resultMap="codeTypeVo">
+    	SELECT 
+    		B.BOARD_TYPE
+    		,B.BOARD_NUM
+    		,B.BOARD_TITLE
+    		,B.BOARD_COMMENT
+		FROM 
+			BOARD B
+		INNER JOIN 
+			COM_CODE C 
+		ON 
+			B.BOARD_TYPE = (SELECT CODE_ID FROM COM_CODE WHERE CODE_ID = #{codeId}) 
+		AND B.BOARD_TYPE = C.CODE_ID
+    </select>
+    
+    <select id="codeTypeTotal" parameterType="Integer" resultMap="Integer">
+        SELECT
+        	COUNT(*) AS TOTAL_CNT
+         FROM
+         	COM_CODE
+    </select>
+    
+    <select id="codeTypeView" parameterType="com.spring.board.vo.CodeTypeVo" resultMap="codeTypeVo">
+        SELECT
+        	CODE_TYPE
+        	,CODE_ID
+        	,CODE_NAME
+        	,CREATOR
+        FROM
+        	COM_CODE
+        WHERE	CODE_TYPE = #{codeType}
+        AND		CODE_ID = #{codeId}	
+    </select>
+    
+</mapper>
