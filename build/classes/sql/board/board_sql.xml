@@ -63,7 +63,7 @@
         ,MODIFIED_TIME
         )
         VALUES
-        ('a01'
+        (#{boardType}
         ,(SELECT NVL(MAX(BOARD_NUM)+1, 1) FROM BOARD) 
         ,#{boardTitle}
         ,#{boardComment}

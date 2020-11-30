@@ -55,7 +55,7 @@
 						Type
 						</td>
 						<td width="120" align="left">
-							<select name="boardSelect" id="boardId">
+							<select name="boardType" id="boardId">
 								<option value="a01">일반</option>
 								<option value="a02">Q&A</option>
 								<option value="a03">익명</option>
