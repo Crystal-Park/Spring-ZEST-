@@ -12,11 +12,13 @@
 
 	$j(document).ready(function(){
 		$j("#submit").on("click",function(){
-			var $frm = $j('.codeId :input');
+			var $frm = $j('.boardList :input');
 			var param = $frm.serialize();
 			
+			console.log(param);
+			
 			$j.ajax({
-			    url : "/board/codeTypeList.do",
+			    url : "/board/boardList.do",
 			    dataType: "json",
 			    type: "POST",
 			    data : param,
@@ -26,7 +28,7 @@
 					
 					alert("메세지:"+data.success);
 						
-					location.href = "/board/codeTypeList.do";
+					location.href = "/board/boardList.do";
 			    },
 			    error: function (jqXHR, textStatus, errorThrown)
 			    {
@@ -35,13 +37,11 @@
 			});
 		});
 		
-		console.log(param);
-		
 	});
 
 </script>
 <body>
-<form class="codeId">
+<form class="boardList">
 <table  align="center">
 	<tr>
 		<td align="right">
@@ -86,11 +86,11 @@
 
 	<tr>
 		<td align="left">
-			<label><input type="checkbox" name="전체" value="a01">전체</label>
-			<label><input type="checkbox" name="일반" value="a01">일반</label>
-			<label><input type="checkbox" name="Q&A" value="a02">Q&A</label>
-			<label><input type="checkbox" name="익명" value="a03">익명</label>
-			<label><input type="checkbox" name="자유" value="a04">자유</label>
+			<label><input type="checkbox" name="boardType" value="a01">전체</label>
+			<label><input type="checkbox" name="boardType" value="a01">일반</label>
+			<label><input type="checkbox" name="boardType" value="a02">Q&A</label>
+			<label><input type="checkbox" name="boardType" value="a03">익명</label>
+			<label><input type="checkbox" name="boardType" value="a04">자유</label>
 			<input id="submit" type="button" value="조회">
 		</td>
 	</tr>
