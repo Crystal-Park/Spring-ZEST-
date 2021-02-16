@@ -42,11 +42,12 @@ public class BoardController {
 		String page = "1";
 		int totalCnt = 0;
 		
-		if(pageVo.getPageNo() == null){
+		if(pageVo.getPageNo() == null || pageVo.getPageNo() == "0"){
 			pageVo.setPageNo(page);
 		}
 		
 		boardList = boardService.SelectBoardList(pageVo);
+		
 		totalCnt = boardService.selectBoardCnt();
 		
 		model.addAttribute("boardList", boardList);

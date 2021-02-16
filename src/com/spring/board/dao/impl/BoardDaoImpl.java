@@ -30,6 +30,12 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public List<BoardVo> selectBoardList(PageVo pageVo) throws Exception {
 		// TODO Auto-generated method stub
+		
+		
+//		if (pageVo.getPageNo() == "0" || pageVo.getPageNo() == null ) {
+//			pageVo.setPageNo("1");
+//		}
+
 		return sqlSession.selectList("board.boardList",pageVo);
 	}
 	

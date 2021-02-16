@@ -30,7 +30,7 @@
 		)
 		WHERE NUMROW BETWEEN (#{pageNo}-1)*10 + 1 AND (#{pageNo})*10
     </select>
-    
+ 
     <select id="boardTotal" parameterType="Integer" resultType="Integer">
 		  SELECT
 		      	COUNT(*) AS TOTAL_CNT
@@ -73,6 +73,7 @@
         ,TO_CHAR(SYSDATE)
         )
     </select>
+    
     <select id="boardUpdate" parameterType="com.spring.board.vo.BoardVo">
     	UPDATE BOARD
         SET
@@ -85,6 +86,7 @@
         WHERE 	BOARD_TYPE = #{boardType}
     	AND 	BOARD_NUM  = #{boardNum}
     </select>
+    
     <delete id="boardDelete" parameterType="com.spring.board.vo.BoardVo">
     	DELETE FROM BOARD 
     	WHERE 	BOARD_TYPE = #{boardType}
